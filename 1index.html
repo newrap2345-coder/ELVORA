@@ -25,9 +25,9 @@
   --site-decoration-opacity: 1;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
-#app { min-height: 100vh; width: 100%; background-color: light-dark(var(--site-background), #171a18); color: light-dark(var(--site-on-background), #f0f1ec); border-radius: 0; overflow: hidden; }
+html { scroll-behavior: smooth; width: 100%; max-width: 100%; overflow-x: clip; }
+body { margin: 0; width: 100%; max-width: 100%; overflow-x: clip; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
+#app { min-height: 100vh; width: 100%; max-width: 100%; background-color: light-dark(var(--site-background), #171a18); color: light-dark(var(--site-on-background), #f0f1ec); border-radius: 0; overflow-x: clip; }
 .site-header { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: calc(26px * var(--site-spacing-scale)) clamp(22px, 6vw, 88px); color: white; border-bottom: 1px solid rgba(255,255,255,.22); }
 .logo { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; font-weight: 700; letter-spacing: .22em; font-size: 20px; }
 .logo-mark { width: 30px; height: 30px; border: 1px solid currentColor; display: grid; place-items: center; font-size: 15px; font-weight: 400; letter-spacing: 0; }
@@ -70,6 +70,30 @@ h2 { font-family: var(--site-font-heading); font-size: calc(clamp(38px, 5.2vw, 6
 .service details[open] summary:after { content: '−'; }
 .service details p { margin-top: 12px; }
 .service .service-cta { display: inline-block; margin-top: 14px; color: inherit; font-size: 11px; letter-spacing: .08em; text-decoration: none; border-bottom: 1px solid #929990; padding-bottom: 5px; }
+.service h3 a { color: inherit; text-decoration: none; }
+.service h3 a:hover,.service .service-cta:hover { opacity: .62; }
+.service-page { display: none; min-height: 70vh; background: #f4f4f0; }
+.service-page.is-active { display: block; }
+.service-page-inner { max-width: 1100px; margin: 0 auto; padding: clamp(70px,9vw,120px) clamp(22px,7vw,80px); }
+.service-page-back { display: inline-flex; gap: 10px; color: #5e675e; text-decoration: none; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 44px; }
+.service-page h2 { max-width: 850px; margin-bottom: 25px; }
+.service-page-lead { max-width: 680px; color: #687168; line-height: 1.8; font-size: 16px; margin: 25px 0 44px; }
+.service-page-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; background: #c9cec7; border: 1px solid #c9cec7; }
+.service-page-item { background: #f4f4f0; padding: 26px; min-width: 0; }
+.service-page-item h3 { font-size: 18px; font-weight: 400; margin: 0 0 12px; }
+.service-page-item p { color: #737a73; font-size: 13px; line-height: 1.75; margin: 0; }
+.service-page-note { color: #737a73; font-size: 12px; line-height: 1.7; margin-top: 30px; }
+.house-detail { margin-top: 54px; }
+.house-detail-heading { font-family: var(--site-font-heading); font-size: clamp(27px,3.5vw,42px); line-height: 1.05; font-weight: 400; letter-spacing: -.035em; margin: 0 0 20px; }
+.house-detail-intro { max-width: 680px; color: #687168; font-size: 14px; line-height: 1.8; }
+.house-detail-columns { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 34px; margin-top: 34px; }
+.house-detail-panel { border-top: 1px solid #c9cec7; padding-top: 18px; min-width: 0; }
+.house-detail-panel h3 { font-size: 15px; font-weight: 400; margin: 0 0 14px; }
+.house-detail-panel ul { padding-left: 18px; margin: 0; color: #737a73; font-size: 13px; line-height: 1.9; }
+.house-detail-callout { margin-top: 38px; padding: 26px; background: #e7e9e3; }
+.house-detail-callout p { max-width: 700px; color: #626b62; font-size: 13px; line-height: 1.8; margin: 10px 0 0; }
+.house-detail-meta { display: flex; gap: 26px; flex-wrap: wrap; margin: 30px 0; }
+.house-detail-meta span { color: #737a73; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
 .service-arrow { position: absolute; right: 26px; top: 28px; font-size: 20px; }
 .dark-band { background: var(--site-primary); color: white; display: grid; grid-template-columns: 1.05fr .95fr; min-height: 560px; }
 .dark-image { min-height: 450px; background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1300&q=85') center/cover; }
@@ -131,14 +155,14 @@ h2 { font-family: var(--site-font-heading); font-size: calc(clamp(38px, 5.2vw, 6
 footer { padding: 28px clamp(24px, 9vw, 140px); background: #202321; color: white; display: flex; justify-content: space-between; gap: 20px; align-items: center; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
 footer span:last-child { color: #9da59c; }
 @media (max-width: 800px) {
- .site-header { position: absolute; }
- .nav { gap: 10px; }
+ .site-header { position: absolute; padding: 18px 22px; width: 100%; min-width: 0; }
+ .nav { gap: 10px; min-width: 0; }
  .nav a:not(.header-cta) { display: none; }
- .hero { min-height: 720px; height: 90vh; }
+ .hero { min-height: 620px; height: 88svh; max-width: 100%; }
  .hero-content { padding-bottom: 68px; }
  .section-head { display: block; }
  .section-intro { margin-top: 25px; }
- .services { grid-template-columns: repeat(2,1fr); }
+ .services { grid-template-columns: repeat(2,minmax(0,1fr)); }
  .service:not(:nth-child(3n)) { border-right: 0; }
  .service:nth-child(3n+2),.service:nth-child(3n) { padding-left: 0; }
  .service:nth-child(odd) { border-right: 1px solid #c9cec7; }
@@ -151,18 +175,34 @@ footer span:last-child { color: #9da59c; }
  .why-item:nth-child(3) { padding-left: 0; }
  .step:nth-child(2) { border-right: 0; }
  .step:nth-child(3) { padding-left: 0; }
- .portfolio-grid { grid-template-columns: 1fr; }
+ .portfolio-grid { grid-template-columns: minmax(0,1fr); }
  .project-caption { grid-template-columns: 1fr; gap: 14px; }
  .project,.project img { min-height: 360px; }
- .contact { grid-template-columns: 1fr; }
+ .service-page-inner { padding: 58px 20px; }
+ .service-page-grid { grid-template-columns: 1fr; }
+ .service-page-item { padding: 21px; }
+ .service-page-lead { font-size: 14px; }
+ .house-detail { margin-top: 38px; }
+ .house-detail-columns { grid-template-columns: 1fr; gap: 24px; }
+ .house-detail-callout { padding: 20px; }
+ .faq-list summary { font-size: 15px; }
+ .contact-meta { flex-direction: column; gap: 20px; }
+ .form { min-width: 0; }
+ .form input,.form textarea,.form select { min-width: 0; font-size: 16px; }
+ footer { padding: 25px 20px; overflow-wrap: anywhere; }
+ .contact { grid-template-columns: minmax(0,1fr); }
 }
 @media (max-width: 480px) {
- .site-header { padding: 20px 20px; }
+ .site-header { padding: 16px 18px; gap: 10px; }
  .logo { font-size: 17px; gap: 8px; }
  .header-cta { padding: 10px 11px; font-size: 9px !important; }
- .hero-content { padding-left: 22px; padding-right: 22px; }
- h1 { font-size: 58px; }
- .section { padding-left: 22px; padding-right: 22px; }
+ .hero { min-height: 610px; height: 86svh; }
+ .hero-content { padding: 125px 20px 48px; width: 100%; min-width: 0; }
+ h1 { font-size: clamp(43px, 12vw, 58px); overflow-wrap: anywhere; }
+ .hero-copy { max-width: 100%; font-size: 14px; }
+ .section { padding: 64px 20px; width: 100%; min-width: 0; }
+ .section-head { margin-bottom: 36px; }
+ .section-intro { font-size: 13px; }
  .services { grid-template-columns: 1fr; }
  .service,.service:nth-child(even) { min-height: 225px; padding: 25px 0; border-right: 0; }
  .service h3 { margin-top: 35px; }
@@ -207,14 +247,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 <section class="section" id="services">
   <div class="section-head"><div><p class="kicker">01 / Направления</p><h2>Всё для вашего<br>будущего пространства.</h2></div><p class="section-intro">Соединяем архитектурную мысль, функциональный дизайн и качественное исполнение — в одном понятном процессе.</p></div>
   <div class="services">
-    <article class="service"><span class="service-num">01 — ARCHITECTURE</span><span class="service-arrow">↗</span><h3>Проектирование домов</h3><p>Дом начинается не с кладки, а с грамотной идеи. Помогаем продумать архитектуру и планировку под ваш участок, привычки и бюджет.</p><details><summary>Что входит в работу</summary><p class="service-detail">Обсуждаем состав семьи и сценарии жизни, планируем помещения и связи между ними, прорабатываем фасады, посадку дома на участке и визуальный образ. Состав проекта, чертежи и необходимость инженерных разделов определяем индивидуально.</p></details><a class="service-cta" href="#contact">Обсудить проект дома ↗</a></article>
-    <article class="service"><span class="service-num">02 — LANDSCAPE</span><span class="service-arrow">↗</span><h3>Ландшафтный дизайн</h3><p>Создаём цельную концепцию участка: чтобы дорожки, растения, освещение и зоны отдыха работали как единое пространство.</p><details><summary>Что входит в работу</summary><p class="service-detail">Изучаем форму и особенности территории, предлагаем функциональное зонирование, расположение дорожек и площадок, места отдыха, идеи озеленения и освещения. Подбор растений и рабочую детализацию согласуем с задачей и сезоном.</p></details><a class="service-cta" href="#contact">Обсудить участок ↗</a></article>
-    <article class="service"><span class="service-num">03 — CONSTRUCTION</span><span class="service-arrow">↗</span><h3>Строительство</h3><p>Берёмся за строительные задачи на частных объектах и последовательно выполняем согласованный объём работ.</p><details><summary>С чем помогаем</summary><p class="service-detail">Кладка стен и перегородок, фундаменты, устройство и ремонт кровли, пристройки, реконструкция и общестроительные работы. Перед началом обсуждаем технологию, материалы, последовательность этапов, сроки и смету.</p></details><a class="service-cta" href="#contact">Обсудить строительство ↗</a></article>
-    <article class="service"><span class="service-num">04 — INTERIOR</span><span class="service-arrow">↗</span><h3>Дизайн интерьера</h3><p>Продумываем интерьер, в котором эстетика не мешает удобству: от общей атмосферы до деталей повседневного использования.</p><details><summary>Что можно проработать</summary><p class="service-detail">Стилистическую концепцию, планировочные решения, расстановку мебели, цветовую палитру, отделочные материалы, освещение и визуализации. Рабочие чертежи и комплектацию обсуждаем отдельно.</p></details><a class="service-cta" href="#contact">Обсудить интерьер ↗</a></article>
-    <article class="service"><span class="service-num">05 — IMPROVEMENT</span><span class="service-arrow">↗</span><h3>Благоустройство</h3><p>Делаем территорию вокруг дома аккуратной, логичной и удобной для ежедневного использования.</p><details><summary>Какие задачи решаем</summary><p class="service-detail">Подготовка основания, дорожки и площадки, отмостка, въездные зоны, ограждения и места отдыха. Состав работ зависит от рельефа, грунта, существующих построек и запланированного бюджета.</p></details><a class="service-cta" href="#contact">Обсудить благоустройство ↗</a></article>
-    <article class="service"><span class="service-num">06 — RENOVATION</span><span class="service-arrow">↗</span><h3>Ремонт и отделка</h3><p>Обновляем помещения и помогаем пройти путь от подготовки основания до аккуратной финишной отделки.</p><details><summary>Виды работ</summary><p class="service-detail">Стяжка и устройство полов, облицовка плиткой, подготовка поверхностей, отделка стен и потолков, наружные и внутренние работы. Сначала фиксируем перечень задач и последовательность этапов, затем согласуем стоимость.</p></details><a class="service-cta" href="#contact">Обсудить ремонт ↗</a></article>
+    <article class="service"><span class="service-num">01 — ARCHITECTURE</span><span class="service-arrow">↗</span><h3><a href="#service-house">Проектирование домов</a></h3><p>Дом начинается не с кладки, а с грамотной идеи. Помогаем продумать архитектуру и планировку под ваш участок, привычки и бюджет.</p><details><summary>Что входит в работу</summary><p class="service-detail">Обсуждаем состав семьи и сценарии жизни, планируем помещения и связи между ними, прорабатываем фасады, посадку дома на участке и визуальный образ. Состав проекта, чертежи и необходимость инженерных разделов определяем индивидуально.</p></details><a class="service-cta" href="#service-house">Подробнее об услуге ↗</a></article>
+    <article class="service"><span class="service-num">02 — LANDSCAPE</span><span class="service-arrow">↗</span><h3><a href="#service-landscape">Ландшафтный дизайн</a></h3><p>Создаём цельную концепцию участка: чтобы дорожки, растения, освещение и зоны отдыха работали как единое пространство.</p><details><summary>Что входит в работу</summary><p class="service-detail">Изучаем форму и особенности территории, предлагаем функциональное зонирование, расположение дорожек и площадок, места отдыха, идеи озеленения и освещения. Подбор растений и рабочую детализацию согласуем с задачей и сезоном.</p></details><a class="service-cta" href="#service-landscape">Подробнее об услуге ↗</a></article>
+    <article class="service"><span class="service-num">03 — CONSTRUCTION</span><span class="service-arrow">↗</span><h3><a href="#service-build">Строительство</a></h3><p>Берёмся за строительные задачи на частных объектах и последовательно выполняем согласованный объём работ.</p><details><summary>С чем помогаем</summary><p class="service-detail">Кладка стен и перегородок, фундаменты, устройство и ремонт кровли, пристройки, реконструкция и общестроительные работы. Перед началом обсуждаем технологию, материалы, последовательность этапов, сроки и смету.</p></details><a class="service-cta" href="#service-build">Подробнее об услуге ↗</a></article>
+    <article class="service"><span class="service-num">04 — INTERIOR</span><span class="service-arrow">↗</span><h3><a href="#service-interior">Дизайн интерьера</a></h3><p>Продумываем интерьер, в котором эстетика не мешает удобству: от общей атмосферы до деталей повседневного использования.</p><details><summary>Что можно проработать</summary><p class="service-detail">Стилистическую концепцию, планировочные решения, расстановку мебели, цветовую палитру, отделочные материалы, освещение и визуализации. Рабочие чертежи и комплектацию обсуждаем отдельно.</p></details><a class="service-cta" href="#service-interior">Подробнее об услуге ↗</a></article>
+    <article class="service"><span class="service-num">05 — IMPROVEMENT</span><span class="service-arrow">↗</span><h3><a href="#service-improve">Благоустройство</a></h3><p>Делаем территорию вокруг дома аккуратной, логичной и удобной для ежедневного использования.</p><details><summary>Какие задачи решаем</summary><p class="service-detail">Подготовка основания, дорожки и площадки, отмостка, въездные зоны, ограждения и места отдыха. Состав работ зависит от рельефа, грунта, существующих построек и запланированного бюджета.</p></details><a class="service-cta" href="#service-improve">Подробнее об услуге ↗</a></article>
+    <article class="service"><span class="service-num">06 — RENOVATION</span><span class="service-arrow">↗</span><h3><a href="#service-repair">Ремонт и отделка</a></h3><p>Обновляем помещения и помогаем пройти путь от подготовки основания до аккуратной финишной отделки.</p><details><summary>Виды работ</summary><p class="service-detail">Стяжка и устройство полов, облицовка плиткой, подготовка поверхностей, отделка стен и потолков, наружные и внутренние работы. Сначала фиксируем перечень задач и последовательность этапов, затем согласуем стоимость.</p></details><a class="service-cta" href="#service-repair">Подробнее об услуге ↗</a></article>
   </div>
 </section>
+<section class="service-page" id="servicePage" aria-live="polite"><div class="service-page-inner" id="servicePageContent"></div></section>
 <section class="dark-band" id="approach">
   <div class="dark-image" role="img" aria-label="Современный интерьер частного дома"></div>
   <div class="dark-copy"><p class="kicker">02 / Наш подход</p><h2>От идеи<br>до результата.</h2><p>Хороший проект начинается с понимания ваших задач. Мы помогаем сформировать концепцию, продумать детали и последовательно перейти к реализации.</p><p>Один контакт на старте. Понятные этапы. Внимание к тому, как пространство будет работать в реальной жизни.</p><a class="text-link" href="#contact" style="align-self:flex-start;margin-top:20px">Начать разговор ↗</a></div>
@@ -272,6 +313,32 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 <footer><span>© OUTLINE — Архитектура и строительство</span><span>Балашов · Саратовская область · <a href="tel:+79966266648" style="color:inherit">8 (996) 626-66-48</a> · <a href="https://vk.ru/club242760253" target="_blank" rel="noopener noreferrer" style="color:inherit">ВКонтакте ↗</a></span></footer>
 </div>
 <script>
+const servicePages = {
+  '#service-house': { number: '01 / ARCHITECTURE', title: 'Проектирование домов', lead: 'Продумываем будущий дом до начала строительства: от планировки и архитектурного образа до согласованного состава проектных материалов.', items: [['Планировочная концепция','Расположение комнат, площади, связи между помещениями, удобные маршруты и сценарии повседневной жизни.'],['Архитектурный облик','Фасады, пропорции, форма крыши, материалы и общий характер будущего дома.'],['Посадка на участок','Учитываем границы участка, подъезд, стороны света, окружение и пожелания к расположению дома.'],['Визуализация и состав проекта','Согласуем, какие чертежи, визуальные материалы и дополнительные разделы нужны именно для вашей задачи.']] },
+  '#service-landscape': { number: '02 / LANDSCAPE', title: 'Ландшафтный дизайн', lead: 'Создаём план участка, где эстетика сочетается с удобством: продумываем зоны, маршруты, озеленение и атмосферу территории.', items: [['Зонирование участка','Размещаем зоны отдыха, сад, хозяйственные пространства, парковку и другие функциональные элементы.'],['Дорожки и площадки','Продумываем маршруты движения, покрытия, площадки и связи между домом и участком.'],['Озеленение','Подбираем направление озеленения, композиции растений и идеи для сезонной выразительности.'],['Освещение и детали','Предусматриваем сценарии вечернего освещения, малые архитектурные формы и уютные акценты.']] },
+  '#service-build': { number: '03 / CONSTRUCTION', title: 'Строительство', lead: 'Выполняем строительные задачи на частных объектах. Состав работ, технологию и последовательность этапов согласуем до начала.', items: [['Фундаменты и основания','Обсуждаем подготовительные и фундаментные работы с учётом проекта и особенностей участка.'],['Стены и перегородки','Кладка блоков и другие общестроительные работы по согласованному объёму.'],['Кровля','Монтаж и ремонт кровельных конструкций, устройство стропильной системы и покрытия.'],['Пристройки и реконструкция','Помогаем с отдельными этапами строительства, ремонтом и изменением существующих объектов.']] },
+  '#service-interior': { number: '04 / INTERIOR', title: 'Дизайн интерьера', lead: 'Помогаем сформировать интерьер, который отражает характер владельцев и остаётся удобным в повседневной жизни.', items: [['Планировка','Продумываем функциональные зоны, расстановку мебели и удобство перемещения.'],['Стилистика и палитра','Подбираем настроение, цветовые сочетания, фактуры и отделочные материалы.'],['Свет и детали','Продумываем общее, рабочее и акцентное освещение, а также детали интерьера.'],['Визуализация','Показываем идею будущего пространства и согласуем состав необходимых материалов.']] },
+  '#service-improve': { number: '05 / IMPROVEMENT', title: 'Благоустройство', lead: 'Организуем пространство вокруг дома, чтобы участок был аккуратным, практичным и комфортным в разные сезоны.', items: [['Подготовка территории','Оцениваем исходное состояние участка, уровни, уклоны и объём подготовительных работ.'],['Площадки и дорожки','Устройство оснований, дорожек, въездных зон и площадок для отдыха.'],['Отмостка и ограждения','Планируем функциональные элементы вокруг дома и по границам территории.'],['Зоны отдыха','Помогаем организовать места для отдыха, семейных встреч и повседневного использования.']] },
+  '#service-repair': { number: '06 / RENOVATION', title: 'Ремонт и отделка', lead: 'Выполняем внутренние и наружные отделочные работы. Перед началом фиксируем перечень задач и согласуем последовательность.', items: [['Полы и стяжка','Подготовка основания, устройство стяжки и другие работы с полами.'],['Плиточные работы','Облицовка стен и полов плиткой, отделка санузлов и отдельных зон.'],['Стены и потолки','Подготовка поверхностей, обшивка, выравнивание и финишная отделка.'],['Комплексный ремонт','Согласуем этапы работ по помещению или объекту, материалы и порядок выполнения.']] }
+};
+const servicePage = document.getElementById('servicePage');
+const servicePageContent = document.getElementById('servicePageContent');
+function renderServiceRoute() {
+  const page = servicePages[location.hash];
+  if (!servicePage || !servicePageContent) return;
+  if (!page) {
+    servicePage.classList.remove('is-active');
+    document.querySelectorAll('main > section:not(#servicePage)').forEach(section => section.hidden = false);
+    return;
+  }
+  document.querySelectorAll('main > section:not(#servicePage)').forEach(section => section.hidden = true);
+  servicePage.classList.add('is-active');
+  const houseExtra = location.hash === '#service-house' ? `<div class="house-detail"><h3 class="house-detail-heading">Дом, который подходит именно вам.</h3><p class="house-detail-intro">Не начинаем с красивой картинки из каталога. Сначала разбираемся, как вы живёте, какой участок у вас есть и что действительно важно: количество комнат, приватность, хранение, естественный свет, удобство входа и связь дома с улицей.</p><div class="house-detail-columns"><div class="house-detail-panel"><h3>Что можно получить в составе проекта</h3><ul><li>планировочное решение с экспликацией помещений;</li><li>архитектурную концепцию и внешний облик дома;</li><li>фасады и основные виды здания;</li><li>посадку дома на участок по предоставленным исходным данным;</li><li>визуализации для понимания будущего результата;</li><li>согласованный перечень чертежей и материалов для дальнейших этапов.</li></ul></div><div class="house-detail-panel"><h3>Что понадобится на старте</h3><ul><li>размеры участка, адрес или схема расположения;</li><li>кадастровый план и ограничения, если они есть;</li><li>пожелания по площади, этажности и количеству комнат;</li><li>фотографии участка и примеры домов, которые нравятся;</li><li>ориентир по бюджету строительства и желаемым срокам.</li></ul></div></div><div class="house-detail-meta"><span>Частные дома</span><span>Индивидуальная планировка</span><span>Балашов и район</span></div><div class="house-detail-callout"><h3 class="house-detail-heading">Важно согласовать состав заранее.</h3><p>Архитектурная концепция и комплект рабочих чертежей — не одно и то же. Инженерные разделы, расчёты конструкций, геология, топосъёмка и документация для согласований могут требовать отдельных профильных специалистов. До начала работ мы зафиксируем, что именно входит в ваш проект и какие исходные данные ещё нужны.</p></div></div>` : '';
+  servicePageContent.innerHTML = `<a class="service-page-back" href="#services">← Все направления</a><p class="kicker">${page.number}</p><h2>${page.title}</h2><p class="service-page-lead">${page.lead}</p><div class="service-page-grid">${page.items.map(item => `<article class="service-page-item"><h3>${item[0]}</h3><p>${item[1]}</p></article>`).join('')}</div>${houseExtra}<p class="service-page-note">Точный состав услуги, сроки и стоимость определяются после обсуждения задачи и исходных данных. Мы не включаем в предложение работы, которые не были согласованы.</p><a class="button" href="#contact">Обсудить задачу ↗</a>`;
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', renderServiceRoute);
+renderServiceRoute();
 document.getElementById('leadForm').addEventListener('submit', function(event) {
   event.preventDefault();
   const data = new FormData(this);
