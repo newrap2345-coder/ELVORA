@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Outline — проектирование, архитектура, ландшафтный дизайн, строительство и благоустройство в Балашове и районе.">
-<meta name="theme-color" content="#f4f4f0">
-<meta property="og:title" content="OUTLINE — архитектура, дизайн и строительство">
+<meta name="description" content="ELVORA design & build — проектирование, архитектура, ландшафтный дизайн, строительство и благоустройство в Балашове и районе.">
+<meta name="theme-color" content="#17191a">
+<meta property="og:title" content="ELVORA design & build — архитектура, дизайн и строительство">
 <meta property="og:description" content="От идеи и проекта до строительства и благоустройства. Балашов и район.">
-<title>Outline — архитектура и строительство</title>
+<title>ELVORA design & build — архитектура и строительство</title>
 <style>
 :root {
   --site-primary: #202321;
@@ -232,12 +231,72 @@ footer span:last-child { color: #9da59c; }
  *, *::before, *::after { transition-duration: .01ms !important; }
 }
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+/* ELVORA dark identity — graphite, charcoal and warm white */
+:root {
+  --site-primary: #111314;
+  --site-on-primary: #f4f4f1;
+  --site-secondary: #292d2d;
+  --site-on-secondary: #f1f1ed;
+  --site-background: #17191a;
+  --site-on-background: #eceeea;
+}
+#app { background: #17191a; color: #eceeea; }
+body { background: #17191a; color: #eceeea; }
+.site-header { background: rgba(15,17,18,.32); border-bottom-color: rgba(255,255,255,.14); }
+.hero { background: #171a1b; }
+.hero:before { background: linear-gradient(125deg,#111415 0%,#252b2b 56%,#101213 100%); }
+.hero:after { opacity: calc(.07 * var(--site-decoration-opacity)); }
+.section, .why, .service-page, .service-page-inner { background: #191c1d; color: #eceeea; }
+.kicker, .section-intro, .service p, .service .service-detail, .service-page-lead,
+.service-page-note, .house-detail-intro, .house-detail-panel ul, .house-detail-callout p,
+.why-item p, .step p, .project-caption p, .note, .faq-list details p,
+.contact-copy p, .contact-meta span { color: #a4aaa5; }
+.services, .service, .why-grid, .why-item, .steps, .step, .project-caption,
+.faq-list, .faq-list details, .service-page-grid, .house-detail-panel, .service details {
+  border-color: #383e3d;
+}
+.service:not(:nth-child(3n)) { border-right-color: #383e3d; }
+.service-symbol, .project-symbol, .dark-image { background: #252a29; color: #aab2aa; }
+.service-page-grid { background: #383e3d; }
+.service-page-item { background: #1d2021; }
+.service-page-item p { color: #a4aaa5; }
+.service-page-back, .service summary, .service details p { color: #c4cac4; }
+.service summary:after { color: #aab2aa; }
+.service .service-detail strong { color: #f0f1ec; }
+.house-detail-callout { background: #252a29; }
+.house-detail-panel ul { color: #a4aaa5; }
+.dark-band { background: #101314; }
+.dark-image:after { color: #aab2aa; }
+.process, .faq { background: #222626; color: #eceeea; }
+.why { background: #191c1d; }
+.contact { background: #222727; color: #eceeea; }
+.contact-meta strong { color: #f0f1ec; }
+.form label { color: #a4aaa5; }
+.form input, .form textarea, .form select { color: #f0f1ec; border-bottom-color: #59615b; }
+.form input::placeholder, .form textarea::placeholder { color: #858d86; }
+.form input:focus, .form textarea:focus, .form select:focus { border-color: #f0f1ec; }
+.form-status { color: #c3d0c2; }
+.button { background: #e8ebe5; color: #171a19; border-color: #e8ebe5; }
+.button:hover { color: #f0f1ec; }
+.button.light { background: #e8ebe5; border-color: #e8ebe5; color: #171a19; }
+.button.light:hover { background: transparent; color: #fff; }
+.text-link { color: #e8ebe5; }
+footer { background: #0e1011; color: #f0f1ec; border-top: 1px solid #303635; }
+footer span:last-child { color: #9da59e; }
+@media (max-width: 800px) {
+ .service:nth-child(odd) { border-right-color: #383e3d; }
+}
+@media (max-width: 480px) {
+ .service,.service:nth-child(even) { border-bottom-color: #383e3d; }
+}
+
 </style>
 </head>
 <body>
 <div id="app">
 <header class="site-header">
-  <a class="logo" href="#top" aria-label="Outline — на главную"><span class="logo-mark">O</span> OUTLINE</a>
+  <a class="logo" href="#top" aria-label="ELVORA design & build — на главную"><span class="logo-mark">E</span> ELVORA</a>
   <nav class="nav" aria-label="Основная навигация">
     <a href="#services">Услуги</a><a href="#approach">Подход</a><a href="#why-us">Почему мы</a><a href="#projects">Проекты</a><a href="#faq">Вопросы</a><a class="header-cta" href="tel:+79966266648">Позвонить ↗</a>
   </nav>
@@ -277,7 +336,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   </div>
 </section>
 <section class="section why" id="why-us">
-  <div class="section-head"><div><p class="kicker">04 / Почему OUTLINE</p><h2>Спокойно и по делу.<br>С вниманием к деталям.</h2></div><p class="section-intro">Нам важно, чтобы заказчик понимал, что происходит на каждом этапе — от первого разговора до завершения работ.</p></div>
+  <div class="section-head"><div><p class="kicker">04 / Почему ELVORA</p><h2>Спокойно и по делу.<br>С вниманием к деталям.</h2></div><p class="section-intro">Нам важно, чтобы заказчик понимал, что происходит на каждом этапе — от первого разговора до завершения работ.</p></div>
   <div class="why-grid">
     <article class="why-item"><b>01 / ВНИМАНИЕ</b><h3>Сначала слушаем</h3><p>Не предлагаем шаблонное решение. Разбираемся в задаче, пожеланиях и реальных условиях объекта.</p></article>
     <article class="why-item"><b>02 / ПРОЗРАЧНОСТЬ</b><h3>Обсуждаем заранее</h3><p>Согласуем объём работ, материалы, этапы и стоимость до начала реализации.</p></article>
@@ -293,7 +352,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   </div>
   <article class="project" style="margin-top:22px;min-height:520px"><img src="sandbox:/mnt/data/outline_gallery.jpg" alt="Фотографии этапов строительства частного дома: кладка стен из блоков и устройство деревянной стропильной системы"><div class="project-info"><small>REALIZED PROJECT / CONSTRUCTION</small><h3>Строительство частного дома — стены и кровельная система</h3></div></article>
   <div class="project-caption"><h3>От кладки стен<br>к конструкции крыши.</h3><div><p>В портфолио — реальный объект команды: на фотографиях показаны этапы возведения стен из блоков и устройство деревянной конструкции крыши. Это не постановочная визуализация, а рабочий процесс на строительной площадке.</p><div class="project-facts"><span>Реальный объект</span><span>Строительные работы</span><span>Балашов и район</span></div></div></div>
-  <p class="note">Реализованный объект: фотографии предоставлены командой OUTLINE. Показаны этапы кладки стен из блоков и устройства деревянной конструкции крыши. Изображения двух верхних карточек — архитектурные и интерьерные референсы, не выполненные компанией объекты.</p>
+  <p class="note">Реализованный объект: фотографии предоставлены командой ELVORA design & build. Показаны этапы кладки стен из блоков и устройства деревянной конструкции крыши. Изображения двух верхних карточек — архитектурные и интерьерные референсы, не выполненные компанией объекты.</p>
 </section>
 <section class="section faq" id="faq">
   <div class="section-head"><div><p class="kicker">06 / Вопросы и ответы</p><h2>Перед тем как<br>начать.</h2></div><p class="section-intro">Собрали ответы на то, о чём чаще всего хочется узнать перед первым разговором.</p></div>
@@ -306,18 +365,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   </div>
 </section>
 <section class="section contact" id="contact">
-  <div class="contact-copy"><p class="kicker">07 / Контакты</p><h2>Давайте обсудим<br>вашу задачу.</h2><p>Расскажите, что хотите построить, изменить или спроектировать. Начнём с короткого разговора и вместе определим следующий шаг — без лишних обещаний и сложных формулировок.</p><div class="contact-meta"><div><span>Телефон</span><strong><a href="tel:+79966266648" style="color:inherit;text-decoration:none">8 (996) 626-66-48</a></strong></div><div><span>ВКонтакте</span><strong><a href="https://vk.ru/club242760253" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">Написать в сообщество ↗</a></strong></div><div><span>География</span><strong>Балашов и район</strong></div></div><div class="contact-actions"><a class="button" href="tel:+79966266648">Позвонить ↗</a><a class="button" href="https://vk.ru/club242760253" target="_blank" rel="noopener noreferrer">Написать в VK ↗</a></div></div>
+  <div class="contact-copy"><p class="kicker">07 / Контакты</p><h2>Давайте обсудим<br>вашу задачу.</h2><p>Расскажите, что хотите построить, изменить или спроектировать. Начнём с короткого разговора и вместе определим следующий шаг — без лишних обещаний и сложных формулировок.</p><div class="contact-meta"><div><span>Телефон</span><strong><a href="tel:+79966266648" style="color:inherit;text-decoration:none">8 (996) 626-66-48</a></strong></div><div><span>ВКонтакте</span><strong><a href="https://vk.ru/elvorastudiobuild" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">Написать в сообщество ↗</a></strong></div><div><span>География</span><strong>Балашов и район</strong></div></div><div class="contact-actions"><a class="button" href="tel:+79966266648">Позвонить ↗</a><a class="button" href="https://vk.ru/elvorastudiobuild" target="_blank" rel="noopener noreferrer">Написать в VK ↗</a></div></div>
   <form class="form" id="leadForm">
     <label>Как к вам обращаться<input name="name" placeholder="Ваше имя" required></label>
     <label>Телефон или мессенджер<input name="contact" placeholder="Как с вами связаться" required></label>
     <label>Что вас интересует?<select name="service"><option>Проектирование дома</option><option>Ландшафтный дизайн</option><option>Строительство</option><option>Дизайн интерьера</option><option>Благоустройство</option><option>Ремонт и отделка</option><option>Другое</option></select></label>
     <label>Коротко о задаче<textarea name="details" placeholder="Расскажите, что планируете"></textarea></label>
     <button class="button" type="submit">Скопировать текст заявки <span>↗</span></button>
-    <div class="form-status" id="formStatus" aria-live="polite">После заполнения скопируйте текст и отправьте его нам в <a href="https://vk.ru/club242760253" target="_blank" rel="noopener noreferrer">сообщения ВКонтакте</a> или позвоните <a href="tel:+79966266648">8 (996) 626-66-48</a>. Онлайн-отправка заявок пока не подключена.</div>
+    <div class="form-status" id="formStatus" aria-live="polite">После заполнения скопируйте текст и отправьте его нам в <a href="https://vk.ru/elvorastudiobuild" target="_blank" rel="noopener noreferrer">сообщения ВКонтакте</a> или позвоните <a href="tel:+79966266648">8 (996) 626-66-48</a>. Онлайн-отправка заявок пока не подключена.</div>
   </form>
 </section>
 </main>
-<footer><span>© OUTLINE — Архитектура и строительство</span><span>Балашов · Саратовская область · <a href="tel:+79966266648" style="color:inherit">8 (996) 626-66-48</a> · <a href="https://vk.ru/club242760253" target="_blank" rel="noopener noreferrer" style="color:inherit">ВКонтакте ↗</a></span></footer>
+<footer><span>© ELVORA design & build — Архитектура и строительство</span><span>Балашов · Саратовская область · <a href="tel:+79966266648" style="color:inherit">8 (996) 626-66-48</a> · <a href="https://vk.ru/elvorastudiobuild" target="_blank" rel="noopener noreferrer" style="color:inherit">ВКонтакте ↗</a></span></footer>
 </div>
 <script>
 const servicePages = {
@@ -349,10 +408,10 @@ renderServiceRoute();
 document.getElementById('leadForm').addEventListener('submit', function(event) {
   event.preventDefault();
   const data = new FormData(this);
-  const message = `Заявка для OUTLINE\nИмя: ${data.get('name')}\nКонтакт: ${data.get('contact')}\nНаправление: ${data.get('service')}\nЗадача: ${data.get('details') || 'Не указана'}`;
+  const message = `Заявка для ELVORA\nИмя: ${data.get('name')}\nКонтакт: ${data.get('contact')}\nНаправление: ${data.get('service')}\nЗадача: ${data.get('details') || 'Не указана'}`;
   const status = document.getElementById('formStatus');
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(message).then(() => { status.innerHTML = 'Текст заявки скопирован. Теперь отправьте его нам <a href="https://vk.ru/club242760253" target="_blank" rel="noopener noreferrer">в сообщения ВКонтакте</a>. Онлайн-отправка на сервер пока не подключена.'; }).catch(() => { status.innerHTML = 'Не удалось скопировать текст автоматически. Позвоните нам или напишите <a href="https://vk.ru/club242760253" target="_blank" rel="noopener noreferrer">ВКонтакте</a>.'; });
+    navigator.clipboard.writeText(message).then(() => { status.innerHTML = 'Текст заявки скопирован. Теперь отправьте его нам <a href="https://vk.ru/elvorastudiobuild" target="_blank" rel="noopener noreferrer">в сообщения ВКонтакте</a>. Онлайн-отправка на сервер пока не подключена.'; }).catch(() => { status.innerHTML = 'Не удалось скопировать текст автоматически. Позвоните нам или напишите <a href="https://vk.ru/elvorastudiobuild" target="_blank" rel="noopener noreferrer">ВКонтакте</a>.'; });
   } else {
     status.textContent = 'Форма заполнена, но отправка пока не подключена. Свяжитесь с нами удобным способом.';
   }
